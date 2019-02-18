@@ -1,0 +1,44 @@
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Russo+One" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style media="screen">
+    body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+  }
+</style>
+<div class="navbar navbar-inverse" role="navigation" style="background-color: #000000; height: 120px; border-radius: 0px;">
+    <div class="container-fluid">
+        <div class="navbar-header" style="color: #ffffff;">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"></a>
+        </div>
+        <div class="navbar-collapse collapse" style="color: #ffffff;">
+                <ul class="nav navbar-nav" style="color: #ffffff;">
+                    <li><a href="/category"> </a></li>
+                </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right" style="color: #ffffff; margin-bottom: 0px;">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">Quotes</a></li>
+            <li><a href="{{url_for('main.music')}}"><strong>Post</strong></a></li>
+            <li><a href="#">|</a></li>
+            {% if current_user.is_authenticated %}
+            <li style="color:white;padding:15px;">{{current_user.username}}</li>
+            <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+            {% else %}
+            <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+            {%endif%}
+            {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('main.profile',uname=current_user.username)}}"style="color: black;">Profile</a></li>
+            <li><a href="{{url_for('auth.logout')}}"style="color: black;">Sign out</a></li>
+            {% else %}
+            <li><a href="{{url_for('auth.login')}}"style="color: black;">Sign in</a></li>
+            {%endif%}
+          </ul>
+    </div>
+</div>

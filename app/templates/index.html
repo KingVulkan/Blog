@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content%}
+<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Russo+One" rel="stylesheet">
+<style media="screen">
+    body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+  }
+</style>
+<div style="background-color: #eed231; height:520px;position: relative;bottom: 36px">
+  <div class="row">
+    <div class="col-md-6" style="text-align: center; padding-left: 5%;"></div>
+
+    <div class="col-md-6" style="text-align: center; padding-right: 5%; padding-top: 5%;">
+      <h2 style="text-align: center; color: #ffffff; font-family: 'Russo One', sans-serif;">"Manow's blog"</h2>
+      <p style="text-align: right; color: #ffffff; padding-bottom: 12px; padding-right: 8px;">By Abu Vulkan</p>
+      <div style="background-color: #000000; padding: 30px;">
+        <a href="{{url_for('main.subscriber')}}"></a>
+        <p style="color: #eed231;"><strong>Get A Notifaction Everytime We Post</strong></p>
+      {{ wtf.quick_form(subscriber_form) }}
+      </div>
+      {% for category in music %}
+    </div>
+
+    <div class="row">
+      <div class="container" style="width:1400px;">
+        <div class="col-md-12">
+          <br>
+          <div class="thumbnail" style="border: 1px solid #800000; width: 1300px;">
+            <p>{{category.title}}</p>
+            <hr style="color:black;display: block;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #800000;
+            margin: 1em 0;
+            padding: 0; ">
+            <p>{{category.category}}</p>
+            <hr style="color:black;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #800000;
+            margin: 1em 0;
+            padding: 0; ">
+            <p>{{category.posted}}</p>
+            <hr style="color:blue; width: 50%;
+            height: 1px;
+            border: 0;
+            border-top: 1px solid #800000;
+            margin: 1em 0;
+            padding: 0; ">
+            <p><a href="/comments/{{category.id}}"><button style=" color: #800000;
+                text-align: center;
+                font-size: 15px;
+                padding: 10px;
+                border-radius: 8px;
+                width: 150px;">Comment</button></a></p>
+          </div>
+          {% if current_user.is_authenticated %}
+          <p><a href="/delete/{{category.id}}"><button style=" color: #800000;
+                text-align: center;
+                font-size: 15px;
+                padding: 10px;
+                border-radius: 8px;
+                width: 150px;">DELETE
+                BLOG</button></a></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+
+  {% endblock %}
