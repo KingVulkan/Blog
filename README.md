@@ -22,6 +22,7 @@ Postgresql
 - Ubuntu software
 
 ## Create a Virtual Environment
+source  virtual/bin/activate
 
 ## Install dependancies
 
