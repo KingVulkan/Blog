@@ -5,7 +5,7 @@ Personal blogging website where i create and share your my opinions on entertain
 
 ## Author name
 
-
+Abdulrahman Abdullahi Omar
 
 ## Technology used
 
@@ -48,7 +48,7 @@ python manage.py db upgrade
 
 ## Running the app in development
 
-In the same terminal type: python3 manage.py server
+In the same terminal type: python3 manage.py server 
 
 Open the browser on http://localhost:5000/
 
